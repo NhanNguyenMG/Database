@@ -11,10 +11,9 @@ public class SQLUtil {
         ResultSetMetaData metaData = results.getMetaData();
         int columnCount = metaData.getColumnCount();
 
-        // Mở thẻ table
         htmlTable.append("<table>");
 
-        // 1. Tạo dòng tiêu đề (Header row) dựa trên tên cột
+
         htmlTable.append("<tr>");
         for (int i = 1; i <= columnCount; i++) {
             htmlTable.append("<th>");
@@ -34,7 +33,6 @@ public class SQLUtil {
             htmlTable.append("</tr>");
         }
 
-        // Đóng thẻ table
         htmlTable.append("</table>");
 
         return htmlTable.toString();

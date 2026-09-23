@@ -13,9 +13,12 @@
   <p>${message}</p>
 
   <form action="emailList" method="post">
-    <span><b>Email:</b></span><input type="email" name="email" value="${user.email}"><br>
-    <span><b>First Name:</b></span><input type="text" name="firstName" value="${user.firstName}"><br>
-    <span><b>Last Name:</b></span><input type="text" name="lastName" value="${user.lastName}"><br>
+    <label>Email:</label>
+    <input type="email" name="email" value="${user.email}"><br>
+    <label>First Name:</label>
+    <input type="text" name="firstName" value="${user.firstName}"><br>
+    <label>Last Name:</label>
+    <input type="text" name="lastName" value="${user.lastName}"><br>
     <button type="submit">Join Now</button><br>
   </form>
   
