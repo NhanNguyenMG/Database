@@ -33,7 +33,13 @@ public class EmailListServlet extends HttpServlet {
 
         req.setAttribute("user", user);
         req.setAttribute("message", message);
-        req.getRequestDispatcher("index.jsp").forward(req, resp);
+        req.getRequestDispatcher("emailList.jsp").forward(req, resp);
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+        req.getRequestDispatcher("emailList.jsp").forward(req, resp);
     }
 
 }

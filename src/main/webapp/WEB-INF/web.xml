@@ -13,5 +13,13 @@
         <servlet-name>EmailListServlet</servlet-name>
         <url-pattern>/emailList</url-pattern>
     </servlet-mapping>
-
+    
+    <servlet>
+        <servlet-name>SQLGatewayServlet</servlet-name>
+        <servlet-class>murach.SQLGatewayServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SQLGatewayServlet</servlet-name>
+        <url-pattern>/sqlGateway</url-pattern>
+    </servlet-mapping>
 </web-app>
