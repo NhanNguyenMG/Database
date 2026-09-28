@@ -1,6 +1,16 @@
 package murach.business;
 
-public class User {
+import java.io.Serializable;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+
+@Entity
+public class User implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long userID;
     private String email;
     private String firstName;
     private String lastName;
@@ -12,6 +22,12 @@ public class User {
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+    public Long getUserID(){return userID;}
+
+    public void setUserID(Long userID){
+        this.userID = userID;
     }
 
     public String getEmail() {

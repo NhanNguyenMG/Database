@@ -1,14 +1,23 @@
 package murach.data;
 
-import java.sql.PreparedStatement;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.sql.SQLException;
 
 public class DBUtil {
-    public static void closePreparedStatement(PreparedStatement ps){
+    private static final EntityManagerFactory emf =
+            Persistence.createEntityManagerFactory("emailListPU");
+
+    public static EntityManagerFactory getEmFactory(){
+        return emf;
+    }
+
+    public static void closePreparedStatement(PreparedStatement ps) {
         try {
-            if(ps != null){
+            if (ps != null) {
                 ps.close();
             }
         } catch (SQLException e) {
@@ -16,9 +25,9 @@ public class DBUtil {
         }
     }
 
-    public static void closeResultSet(ResultSet rs){
+    public static void closeResultSet(ResultSet rs) {
         try {
-            if(rs != null){
+            if (rs != null) {
                 rs.close();
             }
         } catch (SQLException e) {
@@ -36,3 +45,4 @@ public class DBUtil {
         }
     }
 }
+
