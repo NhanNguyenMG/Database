@@ -6,10 +6,27 @@ import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DBUtil {
-    private static final EntityManagerFactory emf =
-            Persistence.createEntityManagerFactory("emailListPU");
+    private static final EntityManagerFactory emf = createFactory();
+
+    private static EntityManagerFactory createFactory() {
+        Map<String, String> props = new HashMap<>();
+        props.put("jakarta.persistence.jdbc.url", getRequiredEnv("DB_URL"));
+        props.put("jakarta.persistence.jdbc.user", getRequiredEnv("DB_USER"));
+        props.put("jakarta.persistence.jdbc.password", getRequiredEnv("DB_PASSWORD"));
+        return Persistence.createEntityManagerFactory("emailListPU", props);
+    }
+
+    private static String getRequiredEnv(String name) {
+        String value = System.getenv(name);
+        if (value == null || value.isEmpty()) {
+            throw new IllegalStateException("Missing environment variable: " + name);
+        }
+        return value;
+    }
 
     public static EntityManagerFactory getEmFactory(){
         return emf;
